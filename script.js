@@ -55,11 +55,9 @@ resBtn.addEventListener('click', () => {
         alert('Sorry, but the maximum size is 100');
     } else {
         squares = input**2;
-        console.log(squares);
         removeGrid();
         createGrid();
         cellStyle.style.width = 100/input + '%';
-        console.log(squares);
     }
 });
 
