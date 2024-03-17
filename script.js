@@ -15,13 +15,40 @@ function createGrid() {
 
 createGrid();
 
+//Random Color
+
+function randomColor() {
+    let rndMath = Math.floor(Math.random() * 256);
+    return rndMath;
+}
+
+//Function for darkening
+
+function layer(element) {
+    let shadow = element.style.boxShadow;
+    let opacity = shadow.slice(14, 17);
+    let oNum = +opacity;
+    if (oNum < 1) {
+        oNum += 0.1;
+    } else {
+        return;
+    }
+    let oStr = oNum.toString();
+    shadow = `inset 0 0 0 1000px rgba(0, 0, 0, ${oStr})`;
+    element.style.boxShadow = shadow;
+}
+
 //write effect
 
 container.addEventListener('mouseover', e => {
+    const targetStyle = e.target.style;
     if (e.target.classList.contains('cell')) {
-        e.target.style.backgroundColor = 'black';
+        targetStyle.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+        layer(e.target);
     }
 })
+
+
 
 //Remove grid
 
